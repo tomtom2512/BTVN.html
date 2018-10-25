@@ -27,8 +27,8 @@ var classTubeItems = document.getElementsByClassName('tube-item');
 if (classTubeItems != null && classTubeItems.length>0){
     var tubeItems = classTubeItems[0];
     for (var i = 0; i < arrayTubes.length; i++){
-        var contentItems = ' <div class="tube-item">\n' +
-            '        <iframe width="45%" height="355" src="https://www.youtube.com/embed/'+ arrayTubes[i].id+'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>\n' +
+        var contentItems = ' <div class="tube-items">\n' +
+            '        <iframe width="100%" height="355" src="https://www.youtube.com/embed/'+ arrayTubes[i].id+'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>\n' +
             '        <h3>'+ arrayTubes[i].title+'</h3>\n' +
             '    </div>\n';
         tubeItems.innerHTML += contentItems;
