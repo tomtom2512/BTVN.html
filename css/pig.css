@@ -1,0 +1,12 @@
+
+img{
+    position: fixed;
+    width: 200px;
+    transform: scale(0.3);
+    animation: rotatePig 10s linear 1s infinite alternate;
+}
+
+@keyframes rotatePig {
+    from{left: 0%; top: 0px}
+    to{left: 80%; top: 0px}
+}

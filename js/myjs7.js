@@ -1,36 +1,20 @@
+var YOUTUBE_API = "https://content.googleapis.com/youtube/v3/search?q=JUSTATEE THANG DIEN&type=video&maxResults=9&part=snippet&key=AIzaSyAwUjk3CwtXCiB_W6Xi0colfOKPgm90hHc";
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+        var jsObject = JSON.parse(xhttp.responseText);
+        var content = '';
+        console.log(xhttp.responseText);
+        for (var i = 0; i < jsObject.items.length; i++) {
 
+            var videoItem = '<div class="tube-item">' +
+                '<iframe width="660" height="355" "https://www.youtube.com/embed/' + jsObject.items[i].id.videpId + '" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>' +
+                '<h3>' + jsObject.item[i].snippet.title + '</h3>' + '</div>';
+            content += videoItem;
+        }
 
-var arrayTubes = new Array(
-    {
-        id: 'UCXao7aTDQM',
-        title: 'Tháng Tư Là Lời Nói Dối Của Em',
-        author: 'Hà Anh Tuấn'
-    },
-    {
-        id: 'dns2WLu8Su8',
-        title: 'Người Tình Mùa Đông',
-        author: 'Hà Anh Tuấn'
-    },
-    {
-        id: 'XyjhXzsVdiI',
-        title: 'Tình Thôi Xót Xa',
-        author: 'Hà Anh Tuấn'
-    },
-    {
-        id: 'nrpjNgZCdlM',
-        title: 'Tái Bút Anh Yêu Em',
-        author: 'Hà Anh Tuấn'
+        document.getElementById("demo").innerHTML = content;
     }
-);
-
-var classTubeItems = document.getElementsByClassName('tube-item');
-if (classTubeItems != null && classTubeItems.length>0){
-    var tubeItems = classTubeItems[0];
-    for (var i = 0; i < arrayTubes.length; i++){
-        var contentItems = ' <div class="tube-items">\n' +
-            '        <iframe width="100%" height="355" src="https://www.youtube.com/embed/'+ arrayTubes[i].id+'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>\n' +
-            '        <h3>'+ arrayTubes[i].title+'</h3>\n' +
-            '    </div>\n';
-        tubeItems.innerHTML += contentItems;
-    }
-}
+};
+xhttp.open("GET", YOUTUBE_API, true);
+xhttp.send();
